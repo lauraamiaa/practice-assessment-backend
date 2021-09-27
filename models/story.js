@@ -9,11 +9,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      story.belongsTo(models.space);
     }
   }
-  Story.init(
+  story.init(
     {
-      name: DataTypes.STRING,
+      name: { type: DataTypes.STRING, allowNull: false },
       content: DataTypes.TEXT,
       imageUrl: DataTypes.STRING,
     },

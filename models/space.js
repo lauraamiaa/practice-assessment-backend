@@ -9,14 +9,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      space.hasMany(models.story);
+      space.belongsTo(models.user);
     }
   }
-  Space.init(
+  space.init(
     {
-      title: DataTypes.STRING,
+      title: { type: DataTypes.STRING, allowNull: false },
       description: DataTypes.TEXT,
-      backgroundColor: DataTypes.STRING,
-      color: DataTypes.STRING,
+      backgroundColor: { type: DataTypes.STRING, backgroundColor: "#ffffff" },
+      color: { type: DataTypes.STRING, color: "#000000" },
     },
     {
       sequelize,
