@@ -10,15 +10,18 @@ module.exports = {
       },
       title: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       description: {
         type: Sequelize.TEXT,
       },
       backgroundColor: {
         type: Sequelize.STRING,
+        defaultValue: "#ffffff",
       },
       color: {
         type: Sequelize.STRING,
+        defaultValue: "#000000",
       },
       createdAt: {
         allowNull: false,
