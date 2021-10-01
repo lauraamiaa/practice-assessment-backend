@@ -105,3 +105,23 @@ router.delete("/myspace/:id", async (req, res, next) => {
     next(e);
   }
 });
+
+router.post("/myspace", authMiddleware, async (req, res, next) => {
+  try {
+    const { name, content, imageUrl, spaceId } = req.body;
+    console.log(req.body);
+    if (!name) {
+      return res.status(400).send({ message: "Please fill in a name" });
+    }
+    const newStory = await Story.create({
+      name,
+      content,
+      imageUrl,
+      spaceId,
+    });
+    res.send(newStory);
+  } catch (e) {
+    console.log(e.message);
+    next(e);
+  }
+});

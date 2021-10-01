@@ -11,7 +11,7 @@ module.exports = {
             "Pet sitters like myself see plenty of strange things in the course of business",
           backgroundColor: "#8d99ae",
           color: "#edf2f4",
-          userId: 2,
+          userId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
