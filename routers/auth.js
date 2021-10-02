@@ -125,3 +125,24 @@ router.post("/myspace", authMiddleware, async (req, res, next) => {
     next(e);
   }
 });
+
+router.patch("/myspace", authMiddleware, async (req, res, next) => {
+  try {
+    const { title, description, backgroundColor, color, spaceId } = req.body;
+
+    // find the space you want to update
+    // findByPk
+    const spaceToUpdate = await Space.findByPk(spaceId, { include: [Story] });
+
+    const updatedSpace = await spaceToUpdate.update({
+      title,
+      description,
+      backgroundColor,
+      color,
+    });
+    res.send(updatedSpace);
+  } catch (e) {
+    console.log(e.message);
+    next(e);
+  }
+});
